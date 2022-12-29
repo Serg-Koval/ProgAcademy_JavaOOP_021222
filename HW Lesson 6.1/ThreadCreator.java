@@ -1,7 +1,7 @@
 package sample;
 
 public class ThreadCreator {
-	Thread[] threads;
+	private Thread[] threads;
 
 	public ThreadCreator(Thread[] threads) {
 		super();
@@ -18,6 +18,5 @@ public class ThreadCreator {
 		for (int i = 0; i < threads.length; i++) {
 			threads[i].start();
 		}
-
 	}
 }
