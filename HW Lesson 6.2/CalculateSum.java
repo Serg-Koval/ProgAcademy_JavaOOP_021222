@@ -4,10 +4,10 @@ import java.math.BigInteger;
 
 public class CalculateSum implements Runnable {
 
-	int[] array;
-	int begin;
-	int end;
-	BigInteger sum = BigInteger.ZERO;
+	private int[] array;
+	private int begin;
+	private int end;
+	private BigInteger sum = BigInteger.ZERO;
 
 	public CalculateSum(int[] array, int begin, int end) {
 		super();
@@ -26,5 +26,4 @@ public class CalculateSum implements Runnable {
 			sum = sum.add(BigInteger.valueOf(array[i]));
 		}
 	}
-
 }
