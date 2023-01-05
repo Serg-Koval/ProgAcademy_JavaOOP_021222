@@ -1,9 +1,9 @@
 package sample;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Scanner;
 
 public class FileService {
@@ -19,27 +19,14 @@ public class FileService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return result.substring(0, result.length() - 1);
+		return result.substring(0, result.length() - System.lineSeparator().toString().length());
 	}
 
-	public static String getStringFromFileBufferedReader(File file) throws IOException {
-
-		try (BufferedReader breader = new BufferedReader(new FileReader(file))) {
-
-			String result = "";
-			String temp = "";
-			for (;;) {
-				temp = breader.readLine();
-				if (temp == null) {
-					break;
-				}
-				result += temp + System.lineSeparator();
-			}
-			return result.substring(0, result.length() - 1);
-
+	public static void saveStringToFile(String text, File File) {
+		try (Writer writer = new PrintWriter(File)) {
+			writer.write(text);
 		} catch (IOException e) {
-			throw e;
+			e.printStackTrace();
 		}
 	}
-
 }
