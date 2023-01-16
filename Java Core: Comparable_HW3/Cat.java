@@ -1,5 +1,7 @@
 package comparablethree;
 
+import java.util.Objects;
+
 public class Cat implements Comparable<Cat> {
 	private String name;
 	private int age;
@@ -35,9 +37,8 @@ public class Cat implements Comparable<Cat> {
 		return "Cat [name=" + name + ", age=" + age + "]";
 	}
 
-	
 	// сравниваю котов по длинне имени
-	
+
 	@Override
 	public int compareTo(Cat o) {
 		if (o == null) {
@@ -51,6 +52,21 @@ public class Cat implements Comparable<Cat> {
 		}
 		return this.age - o.age;
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Cat other = (Cat) obj;
+		return this.getName().length() == other.getName().length() && this.age == other.age;
 	}
 
 }
